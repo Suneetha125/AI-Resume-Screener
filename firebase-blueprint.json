@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user profile information and roles.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique user ID from Firebase Auth." },
+        "email": { "type": "string", "format": "email", "description": "The user's email address." },
+        "displayName": { "type": "string", "description": "The user's display name." },
+        "role": { "type": "string", "enum": ["recruiter", "admin"], "description": "The user's role in the system." }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "Resume": {
+      "title": "Resume",
+      "description": "Stores uploaded resume data and extracted information.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "The unique ID of the resume." },
+        "userId": { "type": "string", "description": "The ID of the user who uploaded the resume." },
+        "fileName": { "type": "string", "description": "The name of the uploaded file." },
+        "fileUrl": { "type": "string", "description": "The URL to the uploaded file (if applicable)." },
+        "rawText": { "type": "string", "description": "The raw text extracted from the resume." },
+        "extractedData": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "phone": { "type": "string" },
+            "skills": { "type": "array", "items": { "type": "string" } },
+            "experience": { "type": "string" },
+            "education": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "fileName", "rawText", "createdAt"]
+    },
+    "JobDescription": {
+      "title": "Job Description",
+      "description": "Stores job descriptions provided by recruiters.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "requiredSkills": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "title", "description", "createdAt"]
+    },
+    "MatchResult": {
+      "title": "Match Result",
+      "description": "Stores the results of the AI matching process.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "resumeId": { "type": "string" },
+        "jobId": { "type": "string" },
+        "score": { "type": "number" },
+        "similarityScore": { "type": "number" },
+        "skillMatchScore": { "type": "number" },
+        "experienceScore": { "type": "number" },
+        "analysis": {
+          "type": "object",
+          "properties": {
+            "strengths": { "type": "array", "items": { "type": "string" } },
+            "missingSkills": { "type": "array", "items": { "type": "string" } },
+            "reasoning": { "type": "string" }
+          }
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "resumeId", "jobId", "score", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "UserProfile", "description": "User profile data." },
+    "/resumes/{resumeId}": { "schema": "Resume", "description": "Uploaded resumes." },
+    "/jobs/{jobId}": { "schema": "JobDescription", "description": "Job descriptions." },
+    "/matches/{matchId}": { "schema": "MatchResult", "description": "AI matching results." }
+  }
+}

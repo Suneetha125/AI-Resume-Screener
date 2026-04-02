@@ -1,0 +1,5 @@
+{
+  "name": "AI Resume Screener and Job Matcher",
+  "description": "A production-ready AI-powered platform for recruiters to upload resumes, match them against job descriptions, and get detailed AI-driven insights and rankings.",
+  "requestFramePermissions": []
+}
