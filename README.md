@@ -1,7 +1,8 @@
 # 🚀 AI Resume Screener and Job Matcher
 
 An intelligent, production-ready platform designed for recruiters and HR professionals to streamline the hiring process. Upload multiple resumes, match them against job descriptions, and get AI-powered rankings and insights in seconds.
-<img width="1915" height="876" alt="image" src="https://github.com/user-attachments/assets/a6b10ead-779b-4523-9041-7a92c20efd3a" />
+<img width="1861" height="883" alt="image" src="https://github.com/user-attachments/assets/bb41cfb3-04b3-44f4-a06c-cd74dcb1309d" />
+
 
 ## ✨ Features
 
