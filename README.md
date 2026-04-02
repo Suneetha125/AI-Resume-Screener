@@ -1,20 +1,67 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 AI Resume Screener and Job Matcher
 
-# Run and deploy your AI Studio app
+An intelligent, production-ready platform designed for recruiters and HR professionals to streamline the hiring process. Upload multiple resumes, match them against job descriptions, and get AI-powered rankings and insights in seconds.
 
-This contains everything you need to run your app locally.
+## ✨ Features
 
-View your app in AI Studio: https://ai.studio/apps/a38c5cb5-7c0c-4390-95af-14f6c6040f64
+- **📄 Multi-Format Support**: Upload resumes in PDF and DOCX formats.
+- **🤖 AI-Powered Analysis**: Uses Google Gemini AI to analyze skills, experience, and cultural fit.
+- **📊 Intelligent Ranking**: Automatically ranks candidates based on their match percentage with the job description.
+- **🔐 Secure Authentication**: Firebase Authentication (Google Login & Email/Password).
+- **☁️ Real-time Database**: Powered by Firestore for storing job postings and candidate data.
+- **🎨 Modern UI**: Built with React, Tailwind CSS, and Framer Motion for a smooth, responsive experience.
 
-## Run Locally
+## 🛠️ Tech Stack
 
-**Prerequisites:**  Node.js
+- **Frontend**: React 19, Vite, Tailwind CSS, Framer Motion
+- **Backend/Database**: Firebase (Auth & Firestore)
+- **AI Engine**: Google Gemini API (`@google/genai`)
+- **Parsing**: `pdfjs-dist` (PDF) and `mammoth` (DOCX)
+- **Deployment**: Render (Static Site)
 
+## 🚀 Getting Started
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Suneetha125/AI-Resume-Screener.git
+cd AI-Resume-Screener
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Set Up Environment Variables
+Create a `.env` file in the root directory and add your keys:
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key
+# Firebase config is automatically loaded from firebase-applet-config.json
+```
+
+### 4. Run Locally
+```bash
+npm run dev
+```
+The app will be available at `http://localhost:3000`.
+
+## 🌍 Deployment (Render)
+
+This project is optimized for deployment on **Render**.
+
+1. **Connect GitHub**: Connect your repository to Render.
+2. **Build Command**: `npm install && npm run build`
+3. **Publish Directory**: `dist`
+4. **Environment Variables**: Add `GEMINI_API_KEY` in the Render dashboard.
+
+## 🔥 Firebase Configuration
+
+To ensure the app works in production, you must:
+1. **Authorize Domain**: Add your Render URL (e.g., `ai-resume-screener-4b9w.onrender.com`) to the **Authorized Domains** list in the Firebase Console.
+2. **Enable Auth Providers**: Enable **Google** and **Email/Password** in the Authentication tab.
+3. **Firestore Rules**: Deploy the provided `firestore.rules` to your Firebase project.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
